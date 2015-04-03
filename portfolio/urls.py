@@ -5,5 +5,5 @@ urlpatterns = patterns('',
     # url(r'^$', 'portfolio.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'', include('siteapp.urls')),
+    url(r'', include('mysite.urls')),
 )
