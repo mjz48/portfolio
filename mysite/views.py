@@ -1,10 +1,17 @@
 from django.shortcuts import render
 
+from mysite.models import Wallpaper
+
 
 def index(request):
     """ main site page
     """
-    context = {}
+    # get a random wallpaper
+    wallpaper = Wallpaper.objects.all()[0]
+
+    context = {
+        'wallpaper': wallpaper,
+    }
     return render(request, 'index.html', context)
 
 

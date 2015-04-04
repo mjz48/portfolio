@@ -3,10 +3,12 @@
 {% block content %}
 <div class="row">
     <div class="small-4 columns">
+        <p>Author: {{ wallpaper.author }}</p>
+        <p>Title: {{ wallpaper.title }}</p>
     </div>
 
     <div class="small-8 columns">
-
+        <img src="{{ wallpaper.url.url }}">
     </div>
 </div>
 {% endblock %}

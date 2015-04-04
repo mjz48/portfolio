@@ -90,13 +90,8 @@ STATIC_ROOT = STATIC_DIR
 
 # media paths
 MEDIA_DIR = "media"
-MEDIA_IMAGE_DIR = "images"
-MEDIA_FILE_DIR = "files"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, MEDIA_DIR)
-MEDIA_IMAGE_ROOT = os.path.join(MEDIA_ROOT, MEDIA_IMAGE_DIR)
-MEDIA_FILE_ROOT = os.path.join(MEDIA_ROOT, MEDIA_FILE_DIR)
-
 MEDIA_URL = '/' + MEDIA_DIR + '/'
 
 
