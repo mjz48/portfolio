@@ -27,8 +27,8 @@ class Wallpaper(models.Model):
     def save(self):
         """ resize image on file upload if necessary
         """
-        self.resize_image()
         super(Wallpaper, self).save()
+        self.resize_image()
 
     def resize_image(self):
         """ make sure image is smaller than MAX_SIZE and if not, resize
@@ -58,7 +58,7 @@ class Wallpaper(models.Model):
             # save image back to the same url
             out_img = io.BytesIO()
             cropped_image.save(out_img, ext)
-            image_file = default_storage.open(filename, 'wb')
+            image_file = default_storage.open(self.url.name, 'wb')
             image_file.write(out_img.getvalue())
             image_file.close()
 
