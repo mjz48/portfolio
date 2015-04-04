@@ -11,4 +11,8 @@ class Wallpaper(models.Model):
     # fields
     title = models.CharField(max_length=250, default="Untitled")
     author = models.CharField(max_length=150, blank=True, null=True)
-    url = models.URLField(blank=False, null=False)
+    url = models.ImageField(
+        upload_to='',
+        blank=False,
+        null=False,
+    )
