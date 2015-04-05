@@ -27,6 +27,10 @@ class Wallpaper(models.Model):
     def save(self):
         """ resize image on file upload if necessary
         """
+        # make sure imagefield is not null
+        if not self.url:
+            raise ValueError('url field of Wallpaper is required!')
+
         super(Wallpaper, self).save()
         self.resize_image()
 
