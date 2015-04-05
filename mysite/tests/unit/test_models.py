@@ -54,23 +54,12 @@ class TestModels(TestCase):
             self.assertLessEqual(resized_size[1], Wallpaper.MAX_SIZE[1])
             self.assertNotEqual(orig_size[0], resized_size[0])
             self.assertNotEqual(orig_size[1], resized_size[1])
-        except Exception:
+        finally:
             try:
                 fn = w.url.name
-
-                import pdb
-                pdb.set_trace()
-
                 os.remove(os.path.join(settings.MEDIA_ROOT, fn))
             except OSError:
                 pass
-        finally:
-            fn = w.url.name
-
-            import pdb
-            pdb.set_trace()
-
-            os.remove(os.path.join(settings.MEDIA_ROOT, fn))
 
     def test_wallpaper_optional_author(self):
         """ wallpapers should have authors, but sometimes, this field will
