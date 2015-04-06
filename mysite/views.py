@@ -16,5 +16,7 @@ def index(request):
 def resume(request):
     """ page to see resume on site
     """
-    context = {}
+    context = {
+        'wallpaper': Wallpaper.get_random_wallpaper(),
+    }
     return render(request, 'resume.html', context)

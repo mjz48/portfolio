@@ -16,9 +16,23 @@
     <!-- script includes -->
     <script type="text/javascript" src="{% static 'script/jquery-2.1.3.min.js' %}"></script>
 
-    {% block http_headers %}{% endblock %}
+    {% block http_headers %}
+    {% endblock %}
 </head>
 <body>
-{% block content %}{% endblock %}
+<!-- sweet little wallpaper thing -->
+<div id="wallpaper" style="background-image: url('{{ wallpaper.image.url }}');"></div>
+<div id="wallpaper-info">
+    <p><a href="{{ wallpaper.link }}" target="_blank">{{ wallpaper.title }}</a></p>
+    {% if wallpaper.author %}
+    <p class="author">by {{ wallpaper.author }}</p>
+    {% else %}
+    <p class="author">Artist Unknown</p>
+    {% endif %}
+</div>
+<a id="button-zhq" class="icon" href="#"></a>
+
+{% block content %}
+{% endblock %}
 </body>
 </html>
