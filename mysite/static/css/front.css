@@ -50,12 +50,12 @@
   background-image: url('../images/button_zhq_on.png');
 }
 
-a {
+a, a:visited {
   color: #FFFFFF;
   text-decoration: none;
 }
 
-a:hover {
+a:hover, a:active {
   color: #B7B7B7;
 }
 

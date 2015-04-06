@@ -2,22 +2,16 @@
 {% load staticfiles %}
 
 {% block http_headers %}
-<script type="javascript">
-$(function() {
-  $('#button-zhq').click(function () {
-    $('#wallpaper-info').toggle();
-  });
-});
-</script>
 {% endblock %}
 
 {% block content %}
 <div id="wallpaper" style="background-image: url('{{ wallpaper.image.url }}');"></div>
 <div id="wallpaper-info">
-    <p><a href="{{ wallpaper.image.url }}">{{ wallpaper.title }}</a></p>
-
+    <p><a href="{{ wallpaper.link }}" target="_blank">{{ wallpaper.title }}</a></p>
     {% if wallpaper.author %}
     <p class="author">by {{ wallpaper.author }}</p>
+    {% else %}
+    <p class="author">Artist Unknown</p>
     {% endif %}
 </div>
 <a id="button-zhq" class="icon" href="#"></a>
