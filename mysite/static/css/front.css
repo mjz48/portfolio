@@ -58,6 +58,30 @@
   border-right: 1px solid rgba(34, 34, 34, 0.5);
 }
 
+#button-facebook {
+  background-image: url('../images/facebook-logo.png');
+}
+
+#button-facebook:hover {
+  background-image: url('../images/facebook-logo-on.png');
+}
+
+#button-linkedin {
+  background-image: url('../images/linkedin-logo.png');
+}
+
+#button-linkedin:hover {
+  background-image: url('../images/linkedin-logo-on.png');
+}
+
+#button-github {
+  background-image: url('../images/github-logo.png');
+}
+
+#button-github:hover {
+  background-image: url('../images/github-logo-on.png');
+}
+
 body {
   color: #FFFFFF;
 }
@@ -98,4 +122,14 @@ a.icon {
   width: 25px;
   height: 25px;
   display: block;
+}
+
+a.social-icon {
+  width: 35px;
+  height: 35px;
+  display: block;
+  float: right;
+  background-size: cover;
+  margin-top: 10px;
+  margin-left: 5px;
 }
