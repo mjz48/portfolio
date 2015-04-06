@@ -7,31 +7,19 @@
     <title>Michael Zhu</title>
 
     <!-- font includes -->
-    <link href='http://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
+    <!-- <link href='http://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'> -->
 
     <!-- css includes -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/foundation/foundation.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/front.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+    <!-- script includes -->
+    <script type="text/javascript" src="{% static 'script/jquery-2.1.3.min.js' %}"></script>
+
+    {% block http_headers %}{% endblock %}
 </head>
 <body>
-<div class="row">
-    <div class="small-12 columns">
-        {% block header %}
-        FUCK
-        {% endblock %}
-    </div>
-</div>
-
-{% block content %}
-stuff
-{% endblock %}
-
-<div class="row">
-    <div class="small-12 columns">
-        {% block footer %}
-        SHIT
-        {% endblock %}
-    </div>
-</div>
+{% block content %}{% endblock %}
 </body>
 </html>

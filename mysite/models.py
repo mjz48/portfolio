@@ -19,11 +19,12 @@ class Wallpaper(models.Model):
     # fields
     title = models.CharField(max_length=250, default="Untitled")
     author = models.CharField(max_length=150, blank=True, null=True)
-    url = models.ImageField(
+    image = models.ImageField(
         upload_to=WALLPAPER_DIR,
         blank=False,
         null=False,
     )
+    link = models.URLField(blank=False, null=False)
 
     @classmethod
     def get_random_wallpaper(cls):
@@ -45,7 +46,7 @@ class Wallpaper(models.Model):
         """ resize image on file upload if necessary
         """
         # make sure imagefield is not null
-        if not self.url:
+        if not self.image:
             raise ValueError('url field of Wallpaper is required!')
 
         super(Wallpaper, self).save()
@@ -55,13 +56,13 @@ class Wallpaper(models.Model):
         """ make sure image is smaller than MAX_SIZE and if not, resize
             the image to make it fit inside MAX_SIZE
         """
-        if not self.url.name:
+        if not self.image.name:
             return
 
-        img = Image.open(io.BytesIO(default_storage.open(self.url.name).read()))
+        img = Image.open(io.BytesIO(default_storage.open(self.image.name).read()))
         img_size = img.size
 
-        (filename, ext) = os.path.splitext(self.url.name)
+        (filename, ext) = os.path.splitext(self.image.name)
         ext = ext or 'jpeg'
         ext = ext.replace('.', '')
         if ext == 'jpg':
@@ -79,7 +80,7 @@ class Wallpaper(models.Model):
             # save image back to the same url
             out_img = io.BytesIO()
             cropped_image.save(out_img, ext)
-            image_file = default_storage.open(self.url.name, 'wb')
+            image_file = default_storage.open(self.image.name, 'wb')
             image_file.write(out_img.getvalue())
             image_file.close()
 

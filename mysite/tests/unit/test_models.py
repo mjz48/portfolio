@@ -33,7 +33,7 @@ class TestModels(TestCase):
             w = Wallpaper()
             w.title = 'Test Image 3'
             w.author = 'Unknown'
-            w.url.save(dummy_filename, File(open(os.path.join(test_img_dir, dummy_filename), 'rb')))
+            w.image.save(dummy_filename, File(open(os.path.join(test_img_dir, dummy_filename), 'rb')))
             w.save()
 
             test_img = Image.open(open(os.path.join(dummy_root, dummy_filename), 'rb'))
@@ -46,7 +46,7 @@ class TestModels(TestCase):
             self.assertEqual(orig_size[1], resized_size[1])
         finally:
             try:
-                fn = w.url.name
+                fn = w.image.name
                 os.remove(os.path.join(settings.MEDIA_ROOT, fn))
             except OSError:
                 pass
@@ -68,7 +68,7 @@ class TestModels(TestCase):
             w = Wallpaper()
             w.title = 'Test Image 1'
             w.author = 'Unknown'
-            w.url.save(dummy_filename, File(open(os.path.join(test_img_dir, dummy_filename), 'rb')))
+            w.image.save(dummy_filename, File(open(os.path.join(test_img_dir, dummy_filename), 'rb')))
             w.save()
 
             test_img = Image.open(open(os.path.join(dummy_root, dummy_filename), 'rb'))
@@ -81,7 +81,7 @@ class TestModels(TestCase):
             self.assertEqual(orig_size[1], resized_size[1])
         finally:
             try:
-                fn = w.url.name
+                fn = w.image.name
                 os.remove(os.path.join(settings.MEDIA_ROOT, fn))
             except OSError:
                 pass
@@ -103,7 +103,7 @@ class TestModels(TestCase):
             w = Wallpaper()
             w.title = 'Test Image 2'
             w.author = 'Unknown'
-            w.url.save(dummy_filename, File(open(os.path.join(test_img_dir, dummy_filename), 'rb')))
+            w.image.save(dummy_filename, File(open(os.path.join(test_img_dir, dummy_filename), 'rb')))
             w.save()
 
             test_img = Image.open(open(os.path.join(dummy_root, dummy_filename), 'rb'))
@@ -116,7 +116,7 @@ class TestModels(TestCase):
             self.assertNotEqual(orig_size[1], resized_size[1])
         finally:
             try:
-                fn = w.url.name
+                fn = w.image.name
                 os.remove(os.path.join(settings.MEDIA_ROOT, fn))
             except OSError:
                 pass
@@ -132,13 +132,13 @@ class TestModels(TestCase):
 
             w = Wallpaper()
             w.title = 'Test Image 3'
-            w.url.save(dummy_filename, File(open(os.path.join(test_img_dir, dummy_filename), 'rb')))
+            w.image.save(dummy_filename, File(open(os.path.join(test_img_dir, dummy_filename), 'rb')))
             w.save()
 
             self.assertIsNone(w.author)
         finally:
             try:
-                fn = w.url.name
+                fn = w.image.name
                 os.remove(os.path.join(settings.MEDIA_ROOT, fn))
             except OSError:
                 pass
@@ -154,13 +154,13 @@ class TestModels(TestCase):
 
             w = Wallpaper()
             w.author = 'Unknown'
-            w.url.save(dummy_filename, File(open(os.path.join(test_img_dir, dummy_filename), 'rb')))
+            w.image.save(dummy_filename, File(open(os.path.join(test_img_dir, dummy_filename), 'rb')))
             w.save()
 
             self.assertEquals('Untitled', w.title)
         finally:
             try:
-                fn = w.url.name
+                fn = w.image.name
                 os.remove(os.path.join(settings.MEDIA_ROOT, fn))
             except OSError:
                 pass
@@ -183,7 +183,7 @@ class TestModels(TestCase):
 
         img_filename = 'test_img_2.jpg'
         file_path = os.path.join(settings.BASE_DIR, 'mysite', 'tests', img_filename)
-        w.url.save(img_filename, File(open(file_path, 'rb')))
+        w.image.save(img_filename, File(open(file_path, 'rb')))
         w.save()
 
         received_w = Wallpaper.get_random_wallpaper()
@@ -201,7 +201,7 @@ class TestModels(TestCase):
             instances[i].author = 'Author %d' % i
 
             path = os.path.join(settings.BASE_DIR, 'mysite', 'tests', 'test_img_%s.jpg' % (i + 1))
-            instances[i].url.save(path, File(open(path, 'rb')))
+            instances[i].image.save(path, File(open(path, 'rb')))
             instances[i].save()
 
         received_w = Wallpaper.get_random_wallpaper()
@@ -221,7 +221,7 @@ class TestModels(TestCase):
             instances[i].author = 'Author %d' % i
 
             path = os.path.join(settings.BASE_DIR, 'mysite', 'tests', 'test_img_%s.jpg' % (i + 1))
-            instances[i].url.save(path, File(open(path, 'rb')))
+            instances[i].image.save(path, File(open(path, 'rb')))
             instances[i].save()
 
         received_w = Wallpaper.get_random_wallpaper()

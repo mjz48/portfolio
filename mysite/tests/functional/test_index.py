@@ -9,7 +9,6 @@ class TestIndex(FunctionalTestCase):
         """ A valid html document should be returned when '/' and 'index' is
             accessed. Make sure the html tag and it's children are valid.
         """
-
         self.browser['ff'].get(self.server_url)
 
         html_node = self.browser['ff'].find_element_by_tag_name('html')
