@@ -29,7 +29,12 @@ class Wallpaper(models.Model):
     def get_random_wallpaper(cls):
         """ return a handle to a random wallpaper instance
         """
-        random_id = random.randint(0, max(1, cls.objects.all().count() - 1))
+        try:
+            max_id = cls.objects.latest('id').id
+        except Wallpaper.DoesNotExist:
+            return None
+
+        random_id = random.randint(0, max_id)
         result_set = cls.objects.filter(id__gte=random_id)
 
         if result_set:

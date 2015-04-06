@@ -6,11 +6,8 @@ from mysite.models import Wallpaper
 def index(request):
     """ main site page
     """
-    # get a random wallpaper
-    wallpaper = Wallpaper.objects.all()[0]
-
     context = {
-        'wallpaper': wallpaper,
+        'wallpaper': Wallpaper.get_random_wallpaper(),
     }
     return render(request, 'index.html', context)
 
