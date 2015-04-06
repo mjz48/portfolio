@@ -10,15 +10,134 @@ body {
   background-position: center;
 }
 
-div.row {
-  max-width: 45rem;
-  min-width: 50%;
-  min-height: 50%;
-}
-
 h1 {
   font-size: 60pt;
   font-family: 'Oswald';
   line-height: 5rem;
   text-transform: uppercase;
+}
+
+p {
+  color: #FFFFFF;
+}
+
+a, a:visited {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+a:hover, a:active {
+  color: #B7B7B7;
+}
+
+a.icon {
+  width: 25px;
+  height: 25px;
+  display: block;
+}
+
+a.social-icon {
+  width: 35px;
+  height: 35px;
+  display: block;
+  float: right;
+  background-size: cover;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+a.outer {
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid #333333;
+  border-radius: 3px;
+  font-size: 10pt;
+  position: relative;
+  top: -15px;
+  padding: 5px 10px;
+}
+
+div.row {
+  max-width: 45rem;
+}
+
+.group {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* navigation styles */
+nav > ul {
+  margin: 0;
+  margin-bottom: 1rem;
+}
+
+nav > ul li {
+  list-style-type: none;
+  float: left;
+}
+
+nav > ul li a {
+  background: rgba(0, 0, 0, 0.3);
+  font-size: 10pt;
+  border-radius: 3px;
+  border: 1px solid #333333;
+  padding: 7px 15px;
+  margin: 0 5px;
+}
+
+nav > ul li a:hover {
+  color: #B7B7B7;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+/* grid styles */
+#main-content {
+  position: relative;
+  top: 150px;
+}
+
+#wallpaper {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  position: absolute;
+  z-index: -10;
+}
+
+#wallpaper-info {
+  width: 100%;
+  min-height: 40px;
+  color: #FFFFFF;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.75);
+  position: absolute;
+  z-index: 100;
+  padding-top: 3px;
+  padding-right: 50px;
+}
+
+#wallpaper-info p {
+  font-size: 10pt;
+  line-height: 1rem;
+  text-align: right;
+  margin: 0;
+}
+
+#wallpaper-info p.author {
+  font-size: 9pt;
+  font-style: italic;
+  color: #3676BA;
+}
+
+#button-zhq {
+  background-image: url('../images/button_zhq.png');
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  z-index: 1000;
+}
+
+#button-zhq:hover {
+  background-image: url('../images/button_zhq_on.png');
 }

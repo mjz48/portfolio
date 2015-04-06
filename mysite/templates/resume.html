@@ -1,5 +1,24 @@
 {% extends 'template.html' %}
 {% load staticfiles %}
 
+{% block http_headers %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/resume.css' %}">
+{% endblock %}
+
 {% block content %}
+<div id="main-content">
+    <div class="row">
+        <nav role="navigation">
+            <ul class="group">
+                <li><a href="{% url 'index' %}">Home</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="row">
+        <div id="resume-container" class="large-12 columns">
+            Michael Zhu
+        </div>
+    </div>
+</div>
 {% endblock %}

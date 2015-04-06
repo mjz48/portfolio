@@ -2,6 +2,7 @@
 {% load staticfiles %}
 
 {% block http_headers %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/front.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -13,10 +14,19 @@
         <a id="button-linkedin" class="social-icon" alt="LinkedIn" title="LinkedIn" href="http://www.linkedin.com/pub/michael-zhu/37/478/595/en" target="_blank"></a>
         <a id="button-facebook" class="social-icon" alt="Facebook" title="Facebook" href="https://www.facebook.com/michael.zhu.182" target="_blank"></a>
     </div>
-    <div class="medium-8 columns">
+    <div id="content" class="medium-8 columns">
         <h1>Michael Zhu</h1>
         <h5 class="subtitle">{{ site_title }}</h5>
+
+        <nav role="navigation">
+            <ul class="group">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'resume' %}">Resume</a></li>
+            </ul>
+        </nav>
+
         <p>White text on top of a picture. What are we doing right here? What are we doing right now. What is this. What is life...</p>
+        <p>View a catalogue of my <a href="{% url 'resume' %}">Manly Feats of Strength</a>!</p>
     </div>
 </div>
 {% endblock %}

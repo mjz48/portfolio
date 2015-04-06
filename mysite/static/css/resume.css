@@ -1,0 +1,13 @@
+/* resume.css
+ * styles for resume page
+ *
+ * Michael Zhu, 2015
+ */
+
+div.row {
+  max-width: 55rem;
+}
+
+#resume-container {
+  background-color: #FFFFFF;
+}
