@@ -8,6 +8,11 @@ div.row {
   max-width: 55rem;
 }
 
+#main-content {
+  position: relative;
+  top: 75px;
+}
+
 #resume-container {
   background-color: #FFFFFF;
 }

@@ -5,20 +5,29 @@
  */
 
 body {
+  color: #FFFFFF;
   background-image: url('../images/wall-default.png');
   background-repeat: no-repeat;
   background-position: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #FFFFFF;
+  text-shadow: 0 0 2px rgba(34, 34, 34, 0.7);
+  margin: 0;
 }
 
 h1 {
   font-size: 60pt;
   font-family: 'Oswald';
   line-height: 5rem;
+  text-shadow: 0 0 5px rgba(34, 34, 34, 0.7);
   text-transform: uppercase;
 }
 
 p {
   color: #FFFFFF;
+  text-shadow: 0 0 3px rgba(34, 34, 34, 0.7);
 }
 
 a, a:visited {
@@ -89,12 +98,6 @@ nav > ul li a {
 nav > ul li a:hover {
   color: #B7B7B7;
   background: rgba(0, 0, 0, 0.35);
-}
-
-/* grid styles */
-#main-content {
-  position: relative;
-  top: 150px;
 }
 
 #wallpaper {
