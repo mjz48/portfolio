@@ -16,7 +16,6 @@
   width: 100%;
   min-height: 40px;
   color: #FFFFFF;
-  //display: none;
   font-weight: bold;
   background-color: rgba(0, 0, 0, 0.75);
   position: absolute;
@@ -48,6 +47,42 @@
 
 #button-zhq:hover {
   background-image: url('../images/button_zhq_on.png');
+}
+
+#main-content {
+  position: relative;
+  top: 150px;
+}
+
+#headshot {
+  border-right: 1px solid rgba(34, 34, 34, 0.5);
+}
+
+body {
+  color: #FFFFFF;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.subtitle {
+  color: #333333;
+  font-size: 12pt;
+  font-weight: bold;
+  font-family: 'Oswald';
+  text-align: center;
+  margin: 0.5rem 0 2rem 0;
+}
+
+.subtitle:before, .subtitle:after {
+  content: '--';
+  margin: 0 10px;
+}
+
+p {
+  color: #FFFFFF;
 }
 
 a, a:visited {

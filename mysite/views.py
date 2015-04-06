@@ -7,6 +7,7 @@ def index(request):
     """ main site page
     """
     context = {
+        'site_title': 'Isle of Zhu',
         'wallpaper': Wallpaper.get_random_wallpaper(),
     }
     return render(request, 'index.html', context)

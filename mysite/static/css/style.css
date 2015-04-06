@@ -11,18 +11,14 @@ body {
 }
 
 div.row {
-  max-width: 100%;
+  max-width: 45rem;
+  min-width: 50%;
+  min-height: 50%;
 }
 
-div.columns {
-  border: 1px solid black;
-}
-
-span.front-text {
-  display: block;
+h1 {
   font-size: 60pt;
   font-family: 'Oswald';
-  position: absolute;
-  top: 30%;
-  left: 10%;
+  line-height: 5rem;
+  text-transform: uppercase;
 }
