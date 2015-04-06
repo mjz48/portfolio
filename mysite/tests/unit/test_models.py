@@ -172,3 +172,71 @@ class TestModels(TestCase):
         w = Wallpaper()
         w.author = 'Unknown'
         self.assertRaises(ValueError, w.save)
+
+    def test_get_random_wallpaper1(self):
+        """ create one wallpaper object and test the return random wallpaper
+            function
+        """
+        w = Wallpaper()
+        w.author = 'John Goodman'
+        w.title = 'Call the Whambulance!'
+
+        img_filename = 'test_img_2.jpg'
+        file_path = os.path.join(settings.BASE_DIR, 'mysite', 'tests', img_filename)
+        w.url.save(img_filename, File(open(file_path, 'rb')))
+        w.save()
+
+        received_w = Wallpaper.get_random_wallpaper()
+        self.assertIsNotNone(received_w)
+        self.assertEqual(received_w.id, w.id)
+
+    def test_get_random_wallpaper2(self):
+        """ create two wallpaper objects and test the return random wallpaper
+            function
+        """
+        instances = {}
+        for i in range(2):
+            instances[i] = Wallpaper()
+            instances[i].title = 'Random Wallpaper %d' % i
+            instances[i].author = 'Author %d' % i
+
+            path = os.path.join(settings.BASE_DIR, 'mysite', 'tests', 'test_img_%s.jpg' % (i + 1))
+            instances[i].url.save(path, File(open(path, 'rb')))
+            instances[i].save()
+
+        received_w = Wallpaper.get_random_wallpaper()
+        self.assertIsNotNone(received_w)
+
+        ids = [w.id for w in instances.itervalues()]
+        self.assertIn(received_w.id, ids)
+
+    def test_get_random_wallpaper3(self):
+        """ create three wallpaper objects and test the return random wallpaper
+            function
+        """
+        instances = {}
+        for i in range(3):
+            instances[i] = Wallpaper()
+            instances[i].title = 'Random Wallpaper %d' % i
+            instances[i].author = 'Author %d' % i
+
+            path = os.path.join(settings.BASE_DIR, 'mysite', 'tests', 'test_img_%s.jpg' % (i + 1))
+            instances[i].url.save(path, File(open(path, 'rb')))
+            instances[i].save()
+
+        received_w = Wallpaper.get_random_wallpaper()
+        self.assertIsNotNone(received_w)
+
+        ids = [w.id for w in instances.itervalues()]
+        self.assertIn(received_w.id, ids)
+
+    def test_get_random_wallpaper_empty(self):
+        """ the get random wallpaper class function should return NoneType
+            when there are no object instances in the database
+        """
+        try:
+            wallpaper = Wallpaper.get_random_wallpaper()
+        except Exception as e:
+            self.fail('Wallpaper.get_random_wallpaper: %s' % e.message)
+
+        self.assertIsNone(wallpaper)

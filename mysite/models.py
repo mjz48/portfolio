@@ -1,5 +1,6 @@
 import os
 import io
+import random
 
 from PIL import Image
 
@@ -23,6 +24,17 @@ class Wallpaper(models.Model):
         blank=False,
         null=False,
     )
+
+    @classmethod
+    def get_random_wallpaper(cls):
+        """ return a handle to a random wallpaper instance
+        """
+        random_id = random.randint(0, max(1, cls.objects.all().count() - 1))
+        result_set = cls.objects.filter(id__gte=random_id)
+
+        if result_set:
+            return result_set[0]
+        return None
 
     def save(self):
         """ resize image on file upload if necessary
