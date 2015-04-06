@@ -20,3 +20,11 @@ def resume(request):
         'wallpaper': Wallpaper.get_random_wallpaper(),
     }
     return render(request, 'resume.html', context)
+
+def login_page(request):
+    """ page for logging in to admin dashboard
+    """
+    context = {
+        'wallpaper': Wallpaper.get_random_wallpaper(),
+    }
+    return render(request, 'login.html', context)

@@ -7,6 +7,8 @@ from . import views
 urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
     url(r'resume', views.resume, name='resume'),
+
+    url(r'login', views.login_page, name='login'),
 )
 
 # setup serving of media asserts on development environment

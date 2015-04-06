@@ -1,0 +1,16 @@
+{% extends 'template.html' %}
+{% load staticfiles %}
+
+{% block http_headers %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/front.css' %}">
+{% endblock %}
+
+{% block content %}
+<div id="main-content" class="row">
+    <div class="large-12 columns">
+        <p>Login</p>
+        <p>Username</p>
+        <p>Password</p>
+    </div>
+</div>
+{% endblock %}
