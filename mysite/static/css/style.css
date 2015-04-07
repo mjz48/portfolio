@@ -26,8 +26,13 @@ h1 {
 }
 
 h2 {
-  font-size: 24pt;
-  margin-bottom: 2rem;
+  font-size: 22pt;
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-size: 18pt;
+  margin-bottom: 1.5rem;
 }
 
 h5 {
@@ -36,7 +41,7 @@ h5 {
 
 p {
   color: #FFFFFF;
-  text-shadow: 0 0 3px rgba(34, 34, 34, 0.7);
+  text-shadow: 0 0 5px rgba(0, 0, 0, 1);
 }
 
 a, a:visited {
@@ -169,7 +174,10 @@ label {
 }
 
 button {
+  font-size: 10pt;
+  border-radius: 3px;
   background-color: #B7B7B7;
+  padding: 8px 20px;
 }
 
 button:hover {

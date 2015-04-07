@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.forms import AuthenticationForm
@@ -33,8 +32,9 @@ def login_page(request):
         return redirect('dashboard')
 
     if request.method == 'POST':
-        import pdb
-        pdb.set_trace()
+        if 'username' not in request.POST or 'password' not in request.POST:
+            messages.add_message(request, messages.ERROR, 'Invalid credentials provided.')
+            return redirect('index')
 
         username = request.POST['username']
         password = request.POST['password']
@@ -46,7 +46,7 @@ def login_page(request):
             return redirect('index')
         else:
             messages.add_message(request, messages.ERROR, 'Invalid credentials provided.')
-            return redirect(reverse('index'))
+            return redirect('index')
 
     context = {
         'login_form': AuthenticationForm(),
