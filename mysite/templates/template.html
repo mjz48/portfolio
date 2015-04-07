@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load staticfiles %}
+{% load template_tags %}
 <html>
 <head lang="en">
     <meta charset="UTF-8">
@@ -24,6 +25,8 @@
 </head>
 <body>
 <!-- sweet little wallpaper thing -->
+{% get_wallpaper %}
+
 <div id="wallpaper" style="background-image: url('{{ wallpaper.image.url }}');"></div>
 <div id="wallpaper-info">
     <p><a href="{{ wallpaper.link }}" target="_blank">{{ wallpaper.title }}</a></p>

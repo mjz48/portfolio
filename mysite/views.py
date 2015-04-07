@@ -12,7 +12,6 @@ def index(request):
     """
     context = {
         'site_title': 'Isle of Zhu',
-        'wallpaper': Wallpaper.get_random_wallpaper(),
     }
     return render(request, 'index.html', context)
 
@@ -21,7 +20,6 @@ def resume(request):
     """ page to see resume on site
     """
     context = {
-        'wallpaper': Wallpaper.get_random_wallpaper(),
     }
     return render(request, 'resume.html', context)
 
@@ -51,7 +49,6 @@ def login_page(request):
 
     context = {
         'login_form': AuthenticationForm(),
-        'wallpaper': Wallpaper.get_random_wallpaper(),
     }
     return render(request, 'login.html', context)
 
