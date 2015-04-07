@@ -56,8 +56,23 @@
   margin: 0 10px;
 }
 
-nav ul {
+nav.front ul {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 3rem;
+}
+
+#login-section {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid #333333;
+  border-radius: 5px;
+  padding: 10px 15px;
+}
+
+#login-section button[type="submit"] {
+  margin: 5px 0;
+}
+
+#nav-section {
+  padding: 0;
 }

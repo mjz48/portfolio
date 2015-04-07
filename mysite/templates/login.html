@@ -6,11 +6,25 @@
 {% endblock %}
 
 {% block content %}
-<div id="main-content" class="row">
-    <div class="large-12 columns">
-        <p>Login</p>
-        <p>Username</p>
-        <p>Password</p>
+<div id="main-content">
+    <div class="row">
+        <div id="nav-section" class="large-10 large-offset-1 columns">
+            <nav role="navigation">
+                <ul class="group">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div id="login-section" class="large-10 large-offset-1 columns">
+            <h2>Login</h2>
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                {{ login_form }}
+                <button class="right" type="submit">Login</button>
+            </form>
+        </div>
     </div>
 </div>
 {% endblock %}
