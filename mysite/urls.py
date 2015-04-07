@@ -9,6 +9,9 @@ urlpatterns = patterns('',
     url(r'resume', views.resume, name='resume'),
 
     url(r'login', views.login_page, name='login'),
+    url(r'logout', views.logout_page, name='logout'),
+
+    url(r'dashboard', views.dashboard, name='dashboard'),
 )
 
 # setup serving of media asserts on development environment

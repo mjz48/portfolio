@@ -69,3 +69,13 @@ class TestViews(TestCase):
 
         self.assertEqual(response.status_code, 302)
         self.assertNotIn('_auth_user_id', self.client.session)
+
+    def test_dashboard_public_redirect(self):
+        """ if an unauthenticated user tries to access the dashboard
+        """
+        self.fail("To Be Implemented")
+
+    def test_dashboard_success_login(self):
+        """ login to dashboard
+        """
+        self.fail("To Be Implemented")

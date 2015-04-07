@@ -3,7 +3,11 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
+    {% if title %}
+    <title>Michael Zhu :: {{ title }}</title>
+    {% else %}
     <title>Michael Zhu</title>
+    {% endif %}
 
     <!-- font includes -->
     <link href='http://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
@@ -25,7 +29,7 @@
     <p><a href="{{ wallpaper.link }}" target="_blank">{{ wallpaper.title }}</a></p>
     {% if wallpaper.author %}
     <p class="author">by {{ wallpaper.author }}</p>
-    {% else %}
+    {% elif wallpaper %}
     <p class="author">Artist Unknown</p>
     {% endif %}
 </div>

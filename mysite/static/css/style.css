@@ -167,6 +167,19 @@ nav > ul li:last-child a {
   background-image: url('../images/button_zhq_on.png');
 }
 
+#main-content {
+  position: relative;
+  top: 100px;
+}
+
+.columns:first-child {
+  padding-left: 0;
+}
+
+.columns:last-child {
+  padding-right: 0;
+}
+
 label {
   color: #FFFFFF;
   font-size: 12pt;

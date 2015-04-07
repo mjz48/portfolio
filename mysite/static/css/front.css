@@ -4,9 +4,22 @@
  * Michael Zhu, 2015
  */
 
+/* grid styles */
+#main-content {
+  position: relative;
+  top: 150px;
+}
+
 #headshot {
   border-right: 1px solid rgba(34, 34, 34, 0.5);
   padding-bottom: 2rem;
+}
+
+/* navigation styles */
+nav ul {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3rem;
 }
 
 #button-facebook {
@@ -33,14 +46,6 @@
   background-image: url('../images/github-logo-on.png');
 }
 
-/* grid styles */
-#main-content {
-  border-radius: 7px;
-  position: relative;
-  top: 150px;
-  padding: 20px 10px;
-}
-
 .subtitle {
   color: #222222;
   font-size: 11pt;
@@ -54,25 +59,4 @@
 .subtitle:before, .subtitle:after {
   content: '--';
   margin: 0 10px;
-}
-
-nav.front ul {
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 3rem;
-}
-
-#login-section {
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid #333333;
-  border-radius: 5px;
-  padding: 10px 15px;
-}
-
-#login-section button[type="submit"] {
-  margin: 5px 0;
-}
-
-#nav-section {
-  padding: 0;
 }
