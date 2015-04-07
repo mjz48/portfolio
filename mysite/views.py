@@ -4,8 +4,6 @@ from django.contrib.auth import authenticate, login as auth_login, logout as aut
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 
-from mysite.models import Wallpaper
-
 
 def index(request):
     """ main site page
