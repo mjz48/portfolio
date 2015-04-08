@@ -20,7 +20,7 @@
     <div class="row">
         <div class="large-12 columns">
             <h2>Add Wallpaper</h2><hr>
-            <form action="{% url 'forms-wallpaper' %}" method="post">
+            <form action="{% url 'forms-wallpaper' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ wallpaper_form }}
                 <button type="submit">Add</button>

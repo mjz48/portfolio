@@ -12,7 +12,7 @@ def index(request):
     """ main site page
     """
     context = {
-        'site_title': 'Isle of Zhu',
+        'site_title': 'The ZHQ Conspiracy',
     }
     return render(request, 'index.html', context)
 
@@ -83,7 +83,7 @@ class FormWallpaper(View):
         """
         request.POST = request.POST.copy()  # make POST data mutable
 
-        wallpaper_form = WallpaperForm(request.POST)
+        wallpaper_form = WallpaperForm(request.POST, request.FILES)
         if wallpaper_form.is_valid():
             wallpaper_form.save()
         else:
