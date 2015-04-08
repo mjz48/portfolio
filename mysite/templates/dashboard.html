@@ -27,6 +27,13 @@
             </form>
 
             <h2>Wallpapers</h2><hr>
+            <ul class="wallpaper-list group">
+                {% for w in wallpapers %}
+                <li class="left"><img src="{{ w.image.url }}"></li>
+                {% empty %}
+                <li class="placeholder">There are no wallpapers in the database.</li>
+                {% endfor %}
+            </ul>
 
             <h2>Add Resume Category</h2><hr>
 

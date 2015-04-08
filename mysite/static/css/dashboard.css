@@ -14,3 +14,39 @@ hr {
   border-top-width: 2px;
   margin-top: 0.3rem;
 }
+
+/* wallpaper styles */
+ul.wallpaper-list {
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  margin-bottom: 2rem;
+}
+
+ul.wallpaper-list li {
+  position: relative;
+  margin: 8px;
+}
+
+ul.wallpaper-list li img {
+  width: 128px;
+  height: 72px;
+}
+
+ul.wallpaper-list li:hover:after {
+  width: 100%;
+  height: 100%;
+  content: '';
+  display: block;
+  background-color: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+ul.wallpaper-list li.placeholder {
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  padding: 5px 15px;
+}
