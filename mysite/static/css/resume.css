@@ -64,10 +64,12 @@ div.row {
 
 #resume-container .strong {
   font-weight: bold;
+  font-size: inherit;
 }
 
 #resume-container .em {
   font-style: italic;
+  font-size: inherit;
 }
 
 #resume-container p.subtitle {
@@ -163,4 +165,22 @@ div.row {
 
 #resume-container div.education-entry {
   padding-left: 10%;
+}
+
+#resume-container div.education-entry img {
+  width: 110px;
+  height: 110px;
+}
+
+#resume-container div.education-entry > div {
+  padding-left: 10px;
+}
+
+#resume-container div.education-entry > div p {
+  margin-bottom: 0;
+}
+
+#resume-container div.education-entry > div p.school-title {
+  font-size: 12pt;
+  margin-bottom: 0.3rem;
 }
