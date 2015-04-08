@@ -4,6 +4,8 @@ from django.contrib.auth import authenticate, login as auth_login, logout as aut
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 
+from mysite.forms import WallpaperForm
+
 
 def index(request):
     """ main site page
@@ -67,5 +69,6 @@ def dashboard(request):
     """
     context = {
         'title': 'Dashboard',
+        'wallpaper_form': WallpaperForm(),
     }
     return render(request, 'dashboard.html', context)

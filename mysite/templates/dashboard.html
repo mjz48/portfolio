@@ -6,14 +6,29 @@
 {% endblock %}
 
 {% block content %}
-<div id="main-content" class="row">
-    <div class="large-12 columns">
-        <nav role="navigation">
-            <ul>
-                <li><a href="{% url 'index' %}">Home</a></li>
-                <li><a href="{% url 'logout' %}">Logout</a></li>
-            </ul>
-        </nav>
+<div id="main-content">
+    <div class="row">
+        <div class="large-12 columns">
+            <nav role="navigation">
+                <ul class="group">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-12 columns">
+            <h2>Add Wallpaper</h2><hr>
+            <form action="" method="post">
+                {{ wallpaper_form }}
+                <button type="submit">Add</button>
+            </form>
+
+            <h2>Add Resume Category</h2><hr>
+
+            <h2>Add Resume Item</h2><hr>
+        </div>
     </div>
 </div>
 {% endblock %}
