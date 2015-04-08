@@ -86,5 +86,12 @@ class FormWallpaper(View):
         wallpaper_form = WallpaperForm(request.POST)
         if wallpaper_form.is_valid():
             wallpaper_form.save()
+        else:
+            errors = {}
+            for field in wallpaper_form:
+                errors[field.name] = field.errors
+
+            msg = "<br>".join([k + ": " + " ".join(v) for k, v in errors.items() if v])
+            messages.add_message(request, messages.ERROR, msg)
 
         return redirect(request.META['HTTP_REFERER'])
