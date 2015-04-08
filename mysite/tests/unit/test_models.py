@@ -13,6 +13,17 @@ class TestModels(TestCase):
     """ unit tests for Django models
     """
 
+    def tearDown(self):
+        """ remove all media files that start with 'test_img_'
+        """
+        wallpaper_root = os.path.join(settings.MEDIA_ROOT, Wallpaper.WALLPAPER_DIR)
+
+        for f in os.listdir(wallpaper_root):
+            if not f.startswith('test_img_'):
+                continue
+
+            os.remove(os.path.join(wallpaper_root, f))
+
     ###########################################################################
     # Wallpaper model
     ###########################################################################
@@ -22,34 +33,26 @@ class TestModels(TestCase):
         """
         dummy_filename = 'test_img_3.jpg'
         dummy_root = os.path.join(settings.MEDIA_ROOT, Wallpaper.WALLPAPER_DIR)
+        test_img_dir = os.path.join(settings.BASE_DIR, 'mysite', 'tests')
 
-        try:
-            test_img_dir = os.path.join(settings.BASE_DIR, 'mysite', 'tests')
+        orig_img = Image.open(open(os.path.join(test_img_dir, dummy_filename), 'rb'))
+        orig_size = orig_img.size
+        orig_img.close()
 
-            orig_img = Image.open(open(os.path.join(test_img_dir, dummy_filename), 'rb'))
-            orig_size = orig_img.size
-            orig_img.close()
+        w = Wallpaper()
+        w.title = 'Test Image 3'
+        w.author = 'Unknown'
+        w.image.save(dummy_filename, File(open(os.path.join(test_img_dir, dummy_filename), 'rb')))
+        w.save()
 
-            w = Wallpaper()
-            w.title = 'Test Image 3'
-            w.author = 'Unknown'
-            w.image.save(dummy_filename, File(open(os.path.join(test_img_dir, dummy_filename), 'rb')))
-            w.save()
+        test_img = Image.open(open(os.path.join(dummy_root, dummy_filename), 'rb'))
+        resized_size = test_img.size
+        test_img.close()
 
-            test_img = Image.open(open(os.path.join(dummy_root, dummy_filename), 'rb'))
-            resized_size = test_img.size
-            test_img.close()
-
-            self.assertLess(resized_size[0], Wallpaper.MAX_SIZE[0])
-            self.assertLess(resized_size[1], Wallpaper.MAX_SIZE[1])
-            self.assertEqual(orig_size[0], resized_size[0])
-            self.assertEqual(orig_size[1], resized_size[1])
-        finally:
-            try:
-                fn = w.image.name
-                os.remove(os.path.join(settings.MEDIA_ROOT, fn))
-            except OSError:
-                pass
+        self.assertLess(resized_size[0], Wallpaper.MAX_SIZE[0])
+        self.assertLess(resized_size[1], Wallpaper.MAX_SIZE[1])
+        self.assertEqual(orig_size[0], resized_size[0])
+        self.assertEqual(orig_size[1], resized_size[1])
 
     def test_wallpaper_exact_no_resize(self):
         """ make sure a wallpaper that is the same size as MAX_SIZE is
@@ -57,34 +60,26 @@ class TestModels(TestCase):
         """
         dummy_filename = 'test_img_1.jpg'
         dummy_root = os.path.join(settings.MEDIA_ROOT, Wallpaper.WALLPAPER_DIR)
+        test_img_dir = os.path.join(settings.BASE_DIR, 'mysite', 'tests')
 
-        try:
-            test_img_dir = os.path.join(settings.BASE_DIR, 'mysite', 'tests')
+        orig_img = Image.open(open(os.path.join(test_img_dir, dummy_filename), 'rb'))
+        orig_size = orig_img.size
+        orig_img.close()
 
-            orig_img = Image.open(open(os.path.join(test_img_dir, dummy_filename), 'rb'))
-            orig_size = orig_img.size
-            orig_img.close()
+        w = Wallpaper()
+        w.title = 'Test Image 1'
+        w.author = 'Unknown'
+        w.image.save(dummy_filename, File(open(os.path.join(test_img_dir, dummy_filename), 'rb')))
+        w.save()
 
-            w = Wallpaper()
-            w.title = 'Test Image 1'
-            w.author = 'Unknown'
-            w.image.save(dummy_filename, File(open(os.path.join(test_img_dir, dummy_filename), 'rb')))
-            w.save()
+        test_img = Image.open(open(os.path.join(dummy_root, dummy_filename), 'rb'))
+        resized_size = test_img.size
+        test_img.close()
 
-            test_img = Image.open(open(os.path.join(dummy_root, dummy_filename), 'rb'))
-            resized_size = test_img.size
-            test_img.close()
-
-            self.assertEqual(resized_size[0], Wallpaper.MAX_SIZE[0])
-            self.assertEqual(resized_size[1], Wallpaper.MAX_SIZE[1])
-            self.assertEqual(orig_size[0], resized_size[0])
-            self.assertEqual(orig_size[1], resized_size[1])
-        finally:
-            try:
-                fn = w.image.name
-                os.remove(os.path.join(settings.MEDIA_ROOT, fn))
-            except OSError:
-                pass
+        self.assertEqual(resized_size[0], Wallpaper.MAX_SIZE[0])
+        self.assertEqual(resized_size[1], Wallpaper.MAX_SIZE[1])
+        self.assertEqual(orig_size[0], resized_size[0])
+        self.assertEqual(orig_size[1], resized_size[1])
 
     def test_wallpaper_max_resize(self):
         """ make sure a wallpaper that is larger than the max size is
@@ -92,78 +87,54 @@ class TestModels(TestCase):
         """
         dummy_filename = 'test_img_2.jpg'
         dummy_root = os.path.join(settings.MEDIA_ROOT, Wallpaper.WALLPAPER_DIR)
+        test_img_dir = os.path.join(settings.BASE_DIR, 'mysite', 'tests')
 
-        try:
-            test_img_dir = os.path.join(settings.BASE_DIR, 'mysite', 'tests')
+        orig_img = Image.open(open(os.path.join(test_img_dir, dummy_filename), 'rb'))
+        orig_size = orig_img.size
+        orig_img.close()
 
-            orig_img = Image.open(open(os.path.join(test_img_dir, dummy_filename), 'rb'))
-            orig_size = orig_img.size
-            orig_img.close()
+        w = Wallpaper()
+        w.title = 'Test Image 2'
+        w.author = 'Unknown'
+        w.image.save(dummy_filename, File(open(os.path.join(test_img_dir, dummy_filename), 'rb')))
+        w.save()
 
-            w = Wallpaper()
-            w.title = 'Test Image 2'
-            w.author = 'Unknown'
-            w.image.save(dummy_filename, File(open(os.path.join(test_img_dir, dummy_filename), 'rb')))
-            w.save()
+        test_img = Image.open(open(os.path.join(dummy_root, dummy_filename), 'rb'))
+        resized_size = test_img.size
+        test_img.close()
 
-            test_img = Image.open(open(os.path.join(dummy_root, dummy_filename), 'rb'))
-            resized_size = test_img.size
-            test_img.close()
-
-            self.assertLessEqual(resized_size[0], Wallpaper.MAX_SIZE[0])
-            self.assertLessEqual(resized_size[1], Wallpaper.MAX_SIZE[1])
-            self.assertNotEqual(orig_size[0], resized_size[0])
-            self.assertNotEqual(orig_size[1], resized_size[1])
-        finally:
-            try:
-                fn = w.image.name
-                os.remove(os.path.join(settings.MEDIA_ROOT, fn))
-            except OSError:
-                pass
+        self.assertLessEqual(resized_size[0], Wallpaper.MAX_SIZE[0])
+        self.assertLessEqual(resized_size[1], Wallpaper.MAX_SIZE[1])
+        self.assertNotEqual(orig_size[0], resized_size[0])
+        self.assertNotEqual(orig_size[1], resized_size[1])
 
     def test_wallpaper_optional_author(self):
         """ wallpapers should have authors, but sometimes, this field will
             be blank
         """
         dummy_filename = 'test_img_3.jpg'
+        test_img_dir = os.path.join(settings.BASE_DIR, 'mysite', 'tests')
 
-        try:
-            test_img_dir = os.path.join(settings.BASE_DIR, 'mysite', 'tests')
+        w = Wallpaper()
+        w.title = 'Test Image 3'
+        w.image.save(dummy_filename, File(open(os.path.join(test_img_dir, dummy_filename), 'rb')))
+        w.save()
 
-            w = Wallpaper()
-            w.title = 'Test Image 3'
-            w.image.save(dummy_filename, File(open(os.path.join(test_img_dir, dummy_filename), 'rb')))
-            w.save()
-
-            self.assertIsNone(w.author)
-        finally:
-            try:
-                fn = w.image.name
-                os.remove(os.path.join(settings.MEDIA_ROOT, fn))
-            except OSError:
-                pass
+        self.assertIsNone(w.author)
 
     def test_wallpaper_optional_title(self):
         """ wallpapers should have titles, but if there is none, it should
             automatically be called 'untitled'
         """
         dummy_filename = 'test_img_3.jpg'
+        test_img_dir = os.path.join(settings.BASE_DIR, 'mysite', 'tests')
 
-        try:
-            test_img_dir = os.path.join(settings.BASE_DIR, 'mysite', 'tests')
+        w = Wallpaper()
+        w.author = 'Unknown'
+        w.image.save(dummy_filename, File(open(os.path.join(test_img_dir, dummy_filename), 'rb')))
+        w.save()
 
-            w = Wallpaper()
-            w.author = 'Unknown'
-            w.image.save(dummy_filename, File(open(os.path.join(test_img_dir, dummy_filename), 'rb')))
-            w.save()
-
-            self.assertEquals('Untitled', w.title)
-        finally:
-            try:
-                fn = w.image.name
-                os.remove(os.path.join(settings.MEDIA_ROOT, fn))
-            except OSError:
-                pass
+        self.assertEquals('Untitled', w.title)
 
     def test_wallpaper_required_image(self):
         """ wallpapers need to have an associated image field value. If this

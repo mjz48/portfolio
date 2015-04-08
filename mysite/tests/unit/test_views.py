@@ -73,9 +73,27 @@ class TestViews(TestCase):
     def test_dashboard_public_redirect(self):
         """ if an unauthenticated user tries to access the dashboard
         """
-        self.fail("To Be Implemented")
+        response = self.client.post(reverse('login'))
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual('http://testserver/', response.url)
 
     def test_dashboard_success_login(self):
         """ login to dashboard
         """
-        self.fail("To Be Implemented")
+        user = User.objects.create_user(
+            username='testbot3',
+            email='testbot3@test.com',
+            password='test',
+        )
+        user.save()
+
+        post_data = {
+            'username': user.username,
+            'password': 'test',
+        }
+        response = self.client.post(reverse('login'), post_data)
+
+        self.assertEqual(response.status_code, 302)
+        self.assertIn('_auth_user_id', self.client.session)
+        self.assertEqual(self.client.session['_auth_user_id'], user.id)
+        self.assertTrue('dashboard' in response.url)
