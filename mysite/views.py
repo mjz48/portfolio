@@ -1,3 +1,4 @@
+from django.views.generic import View
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
@@ -72,3 +73,18 @@ def dashboard(request):
         'wallpaper_form': WallpaperForm(),
     }
     return render(request, 'dashboard.html', context)
+
+
+class FormWallpaper(View):
+    """ API endpoint for forms to manage Wallpaper
+    """
+    def post(self, request):
+        """ create a new Wallpaper
+        """
+        request.POST = request.POST.copy()  # make POST data mutable
+
+        wallpaper_form = WallpaperForm(request.POST)
+        if wallpaper_form.is_valid():
+            wallpaper_form.save()
+
+        return redirect(request.META['HTTP_REFERER'])

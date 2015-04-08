@@ -12,6 +12,8 @@ urlpatterns = patterns('',
     url(r'logout', views.logout_page, name='logout'),
 
     url(r'dashboard', views.dashboard, name='dashboard'),
+
+    url(r'^api/forms/wallpaper', views.FormWallpaper.as_view(), name='forms-wallpaper'),
 )
 
 # setup serving of media asserts on development environment
