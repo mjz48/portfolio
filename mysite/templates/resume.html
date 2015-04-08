@@ -2,7 +2,18 @@
 {% load staticfiles %}
 
 {% block http_headers %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/resume.css' %}">
+<link id="resume-css-include" rel="stylesheet" type="text/css" href="{% static 'css/resume.css' %}">
+
+<script type="text/javascript">
+$(function () {
+  // override ctrl + p event
+  $(document).bind("keyup keydown", function(e) {
+    if (e.ctrlKey && e.keyCode == 80) {
+      printResume();
+    }
+  });
+});
+</script>
 {% endblock %}
 
 {% block content %}
@@ -11,7 +22,7 @@
         <nav role="navigation">
             <ul class="group">
                 <li><a href="{% url 'index' %}">Home</a></li>
-                <li><a href="{% static 'documents/Michael Zhu\'s Precious Little Life - ECE.pdf' %}" target="_blank">Download PDF</a></li>
+                <li><a id="print-resume" href="{% static 'documents/Michael Zhu\'s Precious Little Life - ECE.pdf' %}" target="_blank">Download PDF</a></li>
             </ul>
         </nav>
     </div>

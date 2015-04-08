@@ -40,8 +40,8 @@ div.row {
 #resume-container h1 {
   color: #222222;
   font-size: 58pt;
-  font-family: 'PT Sans Narrow';
-  text-shadow: 0 0 1px rgba(34, 34, 34, 1);
+  font-family: 'Yanone Kaffeesatz';
+  text-shadow: 0 0 1px rgba(34, 34, 34, 0.4);
   text-align: center;
 }
 
@@ -183,4 +183,47 @@ div.row {
 #resume-container div.education-entry > div p.school-title {
   font-size: 12pt;
   margin-bottom: 0.3rem;
+}
+
+@media print {
+  #resume-container {
+    padding: 0;
+  }
+
+  #resume-container * {
+    text-shadow: none;
+  }
+
+  #resume-container hr {
+    margin-bottom: 0.3rem;
+  }
+
+  #resume-container h1 {
+    font-size: 38pt;
+    font-weight: normal;
+    line-height: 3rem;
+    text-shadow: none;
+    padding: 0;
+    margin: 0;
+    margin-top: -0.3rem;
+  }
+
+  #resume-container ul {
+    margin-left: 0.3rem;
+  }
+
+  #resume-container table.skills td {
+    padding: 0;
+  }
+
+  #resume-container table.skills td:first-child {
+    /* shrink */
+    width: 1px;
+    white-space: nowrap;
+    padding-right: 0;
+  }
+
+  #resume-container table.skills td:not(:first-child) {
+    width: 100%;
+  }
 }
