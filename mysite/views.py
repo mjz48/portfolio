@@ -85,7 +85,10 @@ class FormWallpaper(View):
 
         wallpaper_form = WallpaperForm(request.POST, request.FILES)
         if wallpaper_form.is_valid():
-            wallpaper_form.save()
+            wallpaper = wallpaper_form.save()
+
+            msg = "Successfully added new Wallpaper '%s'." % wallpaper.title
+            messages.add_message(request, messages.SUCCESS, msg)
         else:
             errors = {}
             for field in wallpaper_form:

@@ -15,4 +15,152 @@ div.row {
 
 #resume-container {
   background-color: #FFFFFF;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  //box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  padding: 25px 35px;
+  margin-bottom: 3rem;
+}
+
+/* resume container styles */
+#resume-container * {
+  color: #404040;
+  font-size: 11pt;
+  font-family: Calibri, Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif;
+  text-shadow: 0 0 1px rgba(64, 64, 64, 0.4);
+  text-align: left;
+}
+
+#resume-container hr {
+  border-top-width: 2px;
+  border-color: #244061;
+  margin: 0;
+  margin-bottom: 0.5rem;
+}
+
+#resume-container h1 {
+  color: #222222;
+  font-size: 58pt;
+  font-family: 'PT Sans Narrow';
+  text-shadow: 0 0 1px rgba(34, 34, 34, 1);
+  text-align: center;
+}
+
+#resume-container h2 {
+  color: #244061;
+  background: -webkit-linear-gradient(left, rgba(154, 181, 228, 0.55), rgba(154, 181, 228, 0) 30%);
+  background: linear-gradient(left, rgba(154, 181, 228, 0.55), rgba(154, 181, 228, 0) 30%);
+  font-size: 12pt;
+  font-weight: bold;
+  font-family: Calibri, Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif;
+  text-transform: uppercase;
+  text-shadow: 0 0 1px rgba(36, 64, 97, 0.3);
+  padding: 1px 10px;
+  margin: 0;
+}
+
+#resume-container p {
+  margin-bottom: 0.8rem;
+}
+
+#resume-container .strong {
+  font-weight: bold;
+}
+
+#resume-container .em {
+  font-style: italic;
+}
+
+#resume-container p.subtitle {
+  font-size: 10pt;
+  color: #B7B7B7;
+  line-height: 1rem;
+  text-align: center;
+  text-shadow: 0 0 1px rgba(183, 183, 183, 1);
+  font-style: italic;
+  position: relative;
+  top: -5px;
+  margin: 0;
+}
+
+#resume-container ul {
+  list-style: none;
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+#resume-container ul li {
+  padding: 2px 0;
+}
+
+#resume-container ul:not([class]) li:before {
+  content: '';
+  display: inline-block;
+  position: relative;
+  top: 2px;
+  left: -18px;
+  padding: 0;
+  border: 6px solid transparent;
+  border-left-color: #244061;
+  margin-right: -12px;
+}
+
+#resume-container ul.skills {
+  margin: 0;
+}
+
+#resume-container ul.skills li {
+  float: left;
+  font-style: italic;
+  list-style-type: disc;
+  margin-left: 30px;
+  padding: 0;
+}
+
+#resume-container ul.skills li:first-child {
+  list-style-type: none;
+  margin: 0;
+}
+
+#resume-container table {
+  width: 100%;
+  border: none;
+}
+
+#resume-container table.skills {
+  margin-bottom: 1rem;
+}
+
+#resume-container table.skills td {
+  padding: 2px 10px;
+}
+
+#resume-container table.skills td:first-child {
+  font-weight: bold;
+  padding-right: 20px;
+}
+
+#resume-container table.experience {
+  background-color: #D3DFEE;
+  margin-bottom: 0.5rem;
+}
+
+#resume-container table.experience td {
+  text-shadow: 0 0 2px rgba(165, 186, 212, 0.5);
+  padding: 3px 10px;
+}
+
+#resume-container table.experience td:first-child {
+  font-weight: bold;
+}
+
+#resume-container table.experience td:not(:first-child) {
+  text-align: center;
+}
+
+#resume-container table.experience td:last-child {
+  font-style: italic;
+}
+
+#resume-container div.education-entry {
+  padding-left: 10%;
 }
