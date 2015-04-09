@@ -10,9 +10,48 @@
   top: 150px;
 }
 
+@media (max-width: 40rem) {
+  #main-content {
+    top: 75px;
+  }
+}
+
 #headshot {
-  border-right: 1px solid rgba(34, 34, 34, 0.5);
   padding-bottom: 2rem;
+}
+
+#headshot img {
+  width: 100%;
+}
+
+@media (max-width: 40rem) {
+  #headshot {
+    padding: 10px;
+  }
+}
+
+#content {
+  border-left: 1px solid rgba(34, 34, 34, 0.5);
+}
+
+#content a {
+  text-decoration: underline;
+}
+
+@media (max-width: 40rem) {
+  #content {
+    padding: 10px;
+  }
+}
+
+#main-text {
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 5px 10px;
+}
+
+#main-text p:last-child {
+  margin-bottom: 0.3rem;
 }
 
 /* navigation styles */
@@ -20,6 +59,15 @@ nav ul {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 3rem;
+}
+
+a.social-icon {
+  width: 35px;
+  height: 35px;
+  display: block;
+  background-size: cover;
+  margin-top: 10px;
+  margin-left: 5px;
 }
 
 #button-facebook {

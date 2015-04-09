@@ -8,15 +8,15 @@
 {% block content %}
 <!-- main content -->
 <div id="main-content" class="row">
-    <div id="headshot" class="medium-4 columns">
+    <div id="headshot" class="small-12 medium-4 columns">
         <img src="{% static 'images/michael_zhu.jpg' %}">
-        <a id="button-github" class="social-icon" alt="Github" title="Github" href="https://github.com/mjz48" target="_blank"></a>
-        <a id="button-linkedin" class="social-icon" alt="LinkedIn" title="LinkedIn" href="http://www.linkedin.com/pub/michael-zhu/37/478/595/en" target="_blank"></a>
-        <a id="button-facebook" class="social-icon" alt="Facebook" title="Facebook" href="https://www.facebook.com/michael.zhu.182" target="_blank"></a>
+        <a id="button-github" class="right social-icon" alt="Github" title="Github" href="https://github.com/mjz48" target="_blank"></a>
+        <a id="button-linkedin" class="right social-icon" alt="LinkedIn" title="LinkedIn" href="http://www.linkedin.com/pub/michael-zhu/37/478/595/en" target="_blank"></a>
+        <a id="button-facebook" class="right social-icon" alt="Facebook" title="Facebook" href="https://www.facebook.com/michael.zhu.182" target="_blank"></a>
     </div>
-    <div id="content" class="medium-8 columns">
+    <div id="content" class="small-12 medium-8 columns">
         <h1>Michael Zhu</h1>
-        <h5 class="subtitle">{{ site_title }}</h5>
+        <h5 class="subtitle">The Last Zhu</h5>
 
         <nav role="navigation">
             <ul class="group">
@@ -25,8 +25,11 @@
             </ul>
         </nav>
 
-        <p>White text on top of a picture. What are we doing right here? What are we doing right now. What is this. What is life...</p>
-        <p>View a catalogue of my <a href="{% url 'resume' %}">Manly Feats of Strength</a>!</p>
+        <div id="main-text">
+            <p>Welcome. You've reached the personal website of yours truly.</p>
+            <p>I graduated from Cornell University in 2012 with a degree in Computer Engineering and a minor in Computer Science. I'm currently chilling out in the Bay Area. I like to do a lot of things like drawing, skateboarding, and programming (and more recently, Web Development).</p>
+            <p>If you're curious about what I do with computers, you can view a catalogue of my <a href="{% url 'resume' %}">Manly Feats of Strength</a>.</p>
+        </div>
     </div>
 </div>
 {% endblock %}

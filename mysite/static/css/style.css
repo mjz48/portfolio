@@ -60,16 +60,6 @@ a.icon {
   display: block;
 }
 
-a.social-icon {
-  width: 35px;
-  height: 35px;
-  display: block;
-  float: right;
-  background-size: cover;
-  margin-top: 10px;
-  margin-left: 5px;
-}
-
 .dropdown:hover {
   position: relative;
   padding-left: 30px;
