@@ -1,6 +1,7 @@
 from django.views.generic import View
 from django.http import HttpResponseForbidden
 from django.shortcuts import render, redirect
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib import messages
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.forms import AuthenticationForm
@@ -70,10 +71,26 @@ def dashboard(request):
     """ user dashboard. Admin controls to add wallpapers and fiddle with
         resume settings
     """
+    paginator = Paginator(Wallpaper.objects.all(), 60)
+    try:
+        page = 1
+        if 'p' in request.GET:
+            page = request.GET['p']
+
+        wallpapers_on_page = paginator.page(page)
+    except PageNotAnInteger:
+        wallpapers_on_page = paginator.page(1)
+    except EmptyPage:
+        wallpapers_on_page = paginator.page(paginator.num_pages)
+
+    #import pdb
+    #pdb.set_trace()
+
     context = {
         'title': 'Dashboard',
         'wallpaper_form': WallpaperForm(),
-        'wallpapers': Wallpaper.objects.all(),
+        'wallpapers': wallpapers_on_page,
+        'w_page': paginator.page(page),
     }
     return render(request, 'dashboard.html', context)
 

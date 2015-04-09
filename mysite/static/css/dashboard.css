@@ -15,6 +15,10 @@ hr {
   margin-top: 0.3rem;
 }
 
+#add-wallpaper-form {
+  margin-bottom: 2rem;
+}
+
 /* wallpaper styles */
 ul.wallpaper-list {
   width: 100%;

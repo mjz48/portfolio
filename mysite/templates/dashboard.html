@@ -1,5 +1,6 @@
 {% extends "template.html" %}
 {% load staticfiles %}
+{% load mysite_tags %}
 
 {% block http_headers %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/dashboard.css' %}">
@@ -15,6 +16,9 @@ $(function () {
       return false;
     }
   });
+
+  init_slide_section('add-wallpaper', 'add-wallpaper-form');
+  init_slide_section('list-wallpaper', 'list-wallpaper-form', true);
 });
 </script>
 {% endblock %}
@@ -33,18 +37,20 @@ $(function () {
     </div>
     <div class="row">
         <div class="large-12 columns">
-            <h2>Add Wallpaper</h2><hr>
-            <form action="{% url 'form-wallpaper' %}" method="post" enctype="multipart/form-data">
+            <h2 id="add-wallpaper">Add Wallpaper</h2><hr>
+            <form id="add-wallpaper-form" action="{% url 'form-wallpaper' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ wallpaper_form }}
                 <button type="submit">Add</button>
             </form>
 
-            <h2>Wallpapers</h2><hr>
-            <form action="{% url 'form-wallpaper' %}" method="post">
+            <h2 id="list-wallpaper">Wallpapers</h2><hr>
+            <form id="list-wallpaper-form" action="{% url 'form-wallpaper' %}" method="post">
                 {% csrf_token %}
                 <div class="wallpaper-list">
-                    <a class="arrow left-arrow" href="{% url 'dashboard' %}">&lt;</a>
+                    {% if w_page.has_previous %}
+                    <a class="arrow left-arrow" href="{% url_qs 'dashboard' p=w_page.previous_page_number %}">&lt;</a>
+                    {% endif %}
                     <ul class="wallpaper-list group">
                         {% for w in wallpapers %}
                         <li class="left">
@@ -55,7 +61,9 @@ $(function () {
                         <li class="placeholder">There are no wallpapers in the database.</li>
                         {% endfor %}
                     </ul>
-                    <a class="arrow right-arrow" href="{% url 'dashboard' %}">&gt;</a>
+                    {% if w_page.has_next %}
+                    <a class="arrow right-arrow" href="{% url_qs 'dashboard' p=w_page.next_page_number %}">&gt;</a>
+                    {% endif %}
                 </div>
             </form>
 

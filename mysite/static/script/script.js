@@ -105,3 +105,26 @@ function printResume(event) {
 
   return false;
 };
+
+// ----------------------------------------------------------------------------
+// toggle dashboard section
+// ----------------------------------------------------------------------------
+function init_slide_section(header_id, id, start_open) {
+  if (!start_open) {
+    $('#' + id).hide();
+  }
+
+  $('#' + header_id).css({'cursor': 'pointer'});
+  $('#' + header_id).addClass('dropdown');
+
+  // on hover, set header to slide to the right a little
+  $('#' + header_id).hover(function() {
+    $(this).attr('padding-left: 20px;');
+  }, function () {
+    $(this).attr('padding-left: 0;');
+  });
+
+  $('#' + header_id).click(function () {
+    $('#' + id).slideToggle();
+  });
+}
