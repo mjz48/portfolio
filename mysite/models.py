@@ -6,6 +6,7 @@ from PIL import Image
 
 from django.db import models
 from django.db.models.signals import post_delete
+from django.conf import settings
 from django.dispatch.dispatcher import receiver
 from django.core.files.storage import default_storage
 
@@ -88,9 +89,20 @@ class Wallpaper(models.Model):
 
             # if we are on Amazon S3, set the content type
             try:
-                pass
-                # TODO: finish this
-                #default_storage.connection
+                # will throw AttributeError if not using S3
+                using_s3 = default_storage.connection
+
+                import boto
+                boto_url = os.path.join(settings.MEDIA_DIR, self.image.name)
+
+                content_type = 'image/jpeg'
+                f, ext = os.path.splitext(self.image.name)[1]
+                if ext == '.png':
+                    content_type = 'image/png'
+
+                key = boto.connect_s3().get_bucket(settings.AWS_STORAGE_BUCKET_NAME).lookup(boto_url)
+                key.copy(key.bucket, key.name, preserve_acl=True,
+                         metadata={'Content-Type': content_type})
             except AttributeError:
                 pass
 
