@@ -90,12 +90,15 @@ USE_L10N = True
 
 USE_TZ = True
 
+AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 STATIC_DIR = 'static'
 
-STATIC_URL = 'http://%s.s3.amazonaws.com/static/' % os.environ['AWS_STORAGE_BUCKET_NAME']
+STATIC_URL = 'http://%s.s3.amazonaws.com/static/' % AWS_STORAGE_BUCKET_NAME
 STATIC_ROOT = STATIC_DIR
 
 STATICFILES_STORAGE = "portfolio.s3utils.StaticS3BotoStorage"
@@ -103,7 +106,7 @@ STATICFILES_STORAGE = "portfolio.s3utils.StaticS3BotoStorage"
 # media paths
 MEDIA_DIR = "media"
 
-MEDIA_URL = 'http://%s.s3.amazonaws.com/media/' % os.environ['AWS_STORAGE_BUCKET_NAME']
+MEDIA_URL = 'http://%s.s3.amazonaws.com/media/' % AWS_STORAGE_BUCKET_NAME
 MEDIA_ROOT = os.path.join(BASE_DIR, MEDIA_DIR)
 
 
