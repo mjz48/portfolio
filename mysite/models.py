@@ -34,16 +34,9 @@ class Wallpaper(models.Model):
         """ return a handle to a random wallpaper instance
         """
         try:
-            max_id = cls.objects.latest('id').id
-        except Wallpaper.DoesNotExist:
+            return cls.objects.order_by('?')[0]
+        except IndexError:
             return None
-
-        random_id = random.randint(0, max_id)
-        result_set = cls.objects.filter(id__gte=random_id)
-
-        if result_set:
-            return result_set[0]
-        return None
 
     def save(self):
         """ resize image on file upload if necessary
