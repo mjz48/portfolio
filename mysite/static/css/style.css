@@ -70,14 +70,26 @@ a.social-icon {
   margin-left: 5px;
 }
 
-a.outer {
-  background-color: rgba(0, 0, 0, 0.3);
-  border: 1px solid #333333;
-  border-radius: 3px;
-  font-size: 10pt;
-  position: relative;
-  top: -15px;
-  padding: 5px 10px;
+.overlay {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.overlay:hover, .overlay:focus {
+  background-color: transparent;
+}
+
+.delete:hover {
+  background-image: url('../images/delete.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 div.row {

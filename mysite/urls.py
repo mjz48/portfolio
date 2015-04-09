@@ -13,7 +13,7 @@ urlpatterns = patterns('',
 
     url(r'dashboard', views.dashboard, name='dashboard'),
 
-    url(r'^api/forms/wallpaper', views.FormWallpaper.as_view(), name='forms-wallpaper'),
+    url(r'^api/forms/wallpaper', views.FormWallpaper.as_view(), name='form-wallpaper'),
 )
 
 # setup serving of media asserts on development environment

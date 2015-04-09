@@ -90,15 +90,15 @@ function printResume(event) {
     print_frame.name = "print_frame";
     print_frame.width = "0";
     print_frame.height = "0";
-    print_frame.frameborder = "0";
+    print_frame.frameBorder = "0";
     print_frame.src = "about:blank";
     document.body.appendChild(print_frame);
+
+    window.frames["print_frame"].document.body.innerHTML = new String($('#resume-css-include')[0].outerHTML);
+    window.frames["print_frame"].document.body.innerHTML += new String($('#google-font-include')[0].outerHTML);
+
+    window.frames["print_frame"].document.body.innerHTML += document.getElementById('resume-container').parentNode.innerHTML;
   }
-
-  window.frames["print_frame"].document.body.innerHTML = new String($('#resume-css-include')[0].outerHTML);
-  window.frames["print_frame"].document.body.innerHTML += new String($('#google-font-include')[0].outerHTML);
-
-  window.frames["print_frame"].document.body.innerHTML += document.getElementById('resume-container').parentNode.innerHTML;
 
   window.frames["print_frame"].window.focus();
   window.frames["print_frame"].window.print();

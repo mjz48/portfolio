@@ -1,4 +1,5 @@
 from django.views.generic import View
+from django.http import HttpResponseForbidden
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
@@ -80,9 +81,23 @@ def dashboard(request):
 class FormWallpaper(View):
     """ API endpoint for forms to manage Wallpaper
     """
+    def dispatch(self, request, *args, **kwargs):
+        """ custom routing function to allow for delete
+            and post methods in class
+        """
+        if request.method == 'GET':
+            return HttpResponseForbidden()
+        elif request.method == 'POST':
+            if 'delete_wallpaper' in request.POST:
+                return self.delete(request)
+            return self.post(request)
+
     def post(self, request):
         """ create a new Wallpaper
         """
+        if not request.user.is_authenticated():
+            return HttpResponseForbidden()
+
         request.POST = request.POST.copy()  # make POST data mutable
 
         wallpaper_form = WallpaperForm(request.POST, request.FILES)
@@ -97,6 +112,24 @@ class FormWallpaper(View):
                 errors[field.name] = field.errors
 
             msg = "<br>".join([k + ": " + " ".join(v) for k, v in errors.items() if v])
+            messages.add_message(request, messages.ERROR, msg)
+
+        return redirect(request.META['HTTP_REFERER'])
+
+    def delete(self, request):
+        """ delete a Wallpaper
+        """
+        if not request.user.is_authenticated():
+            return HttpResponseForbidden()
+
+        if 'delete_wallpaper' not in request.POST:
+            return redirect(request.META['HTTP_REFERER'])
+
+        try:
+            wallpaper = Wallpaper.objects.filter(id=request.POST['delete_wallpaper'])
+            wallpaper.delete()
+        except Wallpaper.DoesNotExist:
+            msg = "Wallpaper id #%d does not exist." % request.POST['delete_wallpaper']
             messages.add_message(request, messages.ERROR, msg)
 
         return redirect(request.META['HTTP_REFERER'])

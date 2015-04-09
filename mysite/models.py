@@ -5,6 +5,8 @@ import random
 from PIL import Image
 
 from django.db import models
+from django.db.models.signals import post_delete
+from django.dispatch.dispatcher import receiver
 from django.core.files.storage import default_storage
 
 
@@ -91,3 +93,11 @@ class Wallpaper(models.Model):
                 #default_storage.connection
             except AttributeError:
                 pass
+
+
+@receiver(post_delete, sender=Wallpaper)
+def wallpaper_post_delete(sender, instance, **kwargs):
+    """ remove file from imageField
+    """
+    if instance.image:
+        instance.image.delete(False)

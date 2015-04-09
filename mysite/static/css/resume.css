@@ -91,6 +91,7 @@ div.row {
 }
 
 #resume-container ul li {
+  position: relative;
   padding: 2px 0;
 }
 

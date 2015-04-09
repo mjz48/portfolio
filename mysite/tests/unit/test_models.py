@@ -211,3 +211,20 @@ class TestModels(TestCase):
             self.fail('Wallpaper.get_random_wallpaper: %s' % e.message)
 
         self.assertIsNone(wallpaper)
+
+    def test_wallpaper_delete(self):
+        """ on deletion of model instance, delete image file
+        """
+        w = Wallpaper()
+        w.title = 'test_delete'
+        w.author = 'bob'
+
+        filename = 'test_img_3.jpg'
+        path = os.path.join(settings.BASE_DIR, 'mysite', 'tests', filename)
+        w.image.save(filename, File(open(path, 'rb')))
+        w.save()
+
+        expected_filename = w.image.name
+        w.delete()
+
+        self.assertFalse(os.path.exists(os.path.join(settings.MEDIA_ROOT, expected_filename)))

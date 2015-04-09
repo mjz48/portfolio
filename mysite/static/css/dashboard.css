@@ -19,6 +19,9 @@ hr {
 ul.wallpaper-list {
   width: 100%;
   list-style: none;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center;
   margin: 0;
   margin-bottom: 2rem;
 }
@@ -33,7 +36,7 @@ ul.wallpaper-list li img {
   height: 72px;
 }
 
-ul.wallpaper-list li:hover:after {
+ul.wallpaper-list li:not([class="placeholder"]):hover:after {
   width: 100%;
   height: 100%;
   content: '';
@@ -45,8 +48,38 @@ ul.wallpaper-list li:hover:after {
 }
 
 ul.wallpaper-list li.placeholder {
-  border-radius: 5px;
-  background-color: rgba(0, 0, 0, 0.5);
-  text-align: center;
   padding: 5px 15px;
+}
+
+div.wallpaper-list {
+  position: relative;
+}
+
+.arrow {
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  font-size: 48pt;
+  font-weight: bold;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.3);
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  padding: 10px;
+}
+
+.arrow:hover {
+  opacity: 1;
+}
+
+.arrow:hover a {
+  color: #FFFFFF;
+}
+
+.left-arrow {
+  left: -4rem;
+}
+
+.right-arrow {
+  right: -4rem;
 }
