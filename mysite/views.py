@@ -71,9 +71,9 @@ def dashboard(request):
     """ user dashboard. Admin controls to add wallpapers and fiddle with
         resume settings
     """
+    page = 1
     paginator = Paginator(Wallpaper.objects.all(), 60)
     try:
-        page = 1
         if 'p' in request.GET:
             page = request.GET['p']
 
@@ -82,9 +82,6 @@ def dashboard(request):
         wallpapers_on_page = paginator.page(1)
     except EmptyPage:
         wallpapers_on_page = paginator.page(paginator.num_pages)
-
-    #import pdb
-    #pdb.set_trace()
 
     context = {
         'title': 'Dashboard',
