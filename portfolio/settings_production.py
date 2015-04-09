@@ -45,6 +45,7 @@ INSTALLED_APPS = (
 
     # site apps
     'mysite',
+    'storages',
 )
 
 MIDDLEWARE_CLASSES = (
