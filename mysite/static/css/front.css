@@ -87,14 +87,13 @@ a.social-icon {
 }
 
 .subtitle {
-  color: #104782;
-  color: #08325E;
+  color: #98B0D9;
   font-size: 13pt;
   font-weight: bold;
   font-family: 'Oswald';
   text-align: center;
   text-transform: uppercase;
-  text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.75);
   margin: 0.5rem 0 1.3rem 0;
 }
 
