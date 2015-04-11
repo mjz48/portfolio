@@ -6,17 +6,14 @@
 
 /* grid styles */
 #main-content {
-  border-radius: 5px;
-  border: 0;
-  padding: 10px;
-
   position: relative;
-  top: 150px;
+  top: 0;
 }
 
 @media (max-width: 40rem) {
-  #main-content {
-    top: 75px;
+  .vertical-align-middle {
+    top: 75px !important;
+    transform: translateY(0);
   }
 }
 
