@@ -27,7 +27,7 @@ class Wallpaper(models.Model):
         blank=False,
         null=False,
     )
-    link = models.URLField(blank=False, null=False)
+    link = models.URLField(max_length=1000, blank=False, null=False)
 
     @classmethod
     def get_random_wallpaper(cls):
