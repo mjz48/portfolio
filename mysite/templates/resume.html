@@ -6,9 +6,12 @@
 
 <script type="text/javascript">
 $(function () {
+  createPrintFrame();
+
   // override ctrl + p event
-  $(document).bind("keyup keydown", function(e) {
-    if (e.ctrlKey && e.keyCode == 80) {
+  $(window).bind("keydown", function(event) {
+    console.log('keypress');
+    if (event.ctrlKey && event.keyCode == 80) {
       printResume();
     }
   });

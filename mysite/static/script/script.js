@@ -82,9 +82,7 @@ if (!String.prototype.format) {
 // ----------------------------------------------------------------------------
 // print resume javascript function
 // ----------------------------------------------------------------------------
-
-// create an iframe if needed and pull out resume contents to be printed
-function printResume(event) {
+function createPrintFrame() {
   if ($('iframe[name="print_frame"]').length == 0) {
     var print_frame = document.createElement('iframe');
     print_frame.name = "print_frame";
@@ -99,10 +97,16 @@ function printResume(event) {
 
     window.frames["print_frame"].document.body.innerHTML += document.getElementById('resume-container').parentNode.innerHTML;
   }
+}
+
+// create an iframe if needed and pull out resume contents to be printed
+function printResume(event) {
+  createPrintFrame();
 
   window.frames["print_frame"].window.focus();
   window.frames["print_frame"].window.print();
 
+  window.focus(); // bring focus back to main window
   return false;
 };
 
