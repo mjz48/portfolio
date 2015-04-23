@@ -164,26 +164,8 @@ div.row {
   font-style: italic;
 }
 
-#resume-container div.education-entry {
-  padding-left: 10%;
-}
-
-#resume-container div.education-entry img {
-  width: 110px;
-  height: 110px;
-}
-
-#resume-container div.education-entry > div {
-  padding-left: 10px;
-}
-
-#resume-container div.education-entry > div p {
-  margin-bottom: 0;
-}
-
-#resume-container div.education-entry > div p.school-title {
-  font-size: 12pt;
-  margin-bottom: 0.3rem;
+#resume-container table.education td {
+  padding: 5px;
 }
 
 @media print {
