@@ -1,4 +1,5 @@
 keyring.txt
+*.swp
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -57,3 +58,9 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# database ignores
+*.sqlite3
+
+# ignore virtualenv
+venv/
