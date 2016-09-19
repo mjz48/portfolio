@@ -43,7 +43,7 @@
 
 #main-text { border-radius: 5px; padding: 5px 10px; }
 #main-text a { text-decoration: underline; }
-#main-text p { font-size: 14pt; }
+#main-text p { text-align: center; font-size: 14pt; }
 #main-text p:last-child { margin-bottom: 0.3rem; }
 
 /* navigation styles */
