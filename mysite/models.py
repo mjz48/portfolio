@@ -89,7 +89,7 @@ class Wallpaper(models.Model):
                 boto_url = os.path.join(settings.MEDIA_DIR, self.image.name)
 
                 content_type = 'image/jpeg'
-                f, ext = os.path.splitext(self.image.name)[1]
+                ext = os.path.splitext(self.image.name)[1]
                 if ext == '.png':
                     content_type = 'image/png'
 
