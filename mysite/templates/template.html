@@ -30,7 +30,7 @@
     <meta name="theme-color" content="#ffffff">
 
     <!-- font includes -->
-    <link id="google-font-include" href='http://fonts.googleapis.com/css?family=Oswald:400,700|Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
+    <link id="google-font-include" href='http://fonts.googleapis.com/css?family=Oswald:400, 700|Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 
     <!-- css includes -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/foundation/foundation.min.css' %}">
@@ -44,29 +44,32 @@
     {% endblock %}
 </head>
 <body>
+
 <!-- sweet little wallpaper thing -->
 {% get_wallpaper %}
 
-<div id="wallpaper" style="background-image: url('{{ wallpaper.image.url }}');"></div>
-<div id="wallpaper-info">
-    <p><a href="{{ wallpaper.link }}" target="_blank">{{ wallpaper.title }}</a></p>
-    {% if wallpaper.author %}
-    <p class="author">by {{ wallpaper.author }}</p>
-    {% elif wallpaper %}
-    <p class="author">Artist Unknown</p>
-    {% endif %}
-</div>
-<a id="button-zhq" class="icon" href="{% url 'login' %}"></a>
-
-<!-- flash message area -->
-<div class="row">
-    <div class="large-12 columns">
-        <ul class="messages">
-            {% for message in messages %}
-            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message|safe }}</li>
-            {% endfor %}
-        </ul>
-    </div>
+<div class="not-printable">
+  <div id="wallpaper" style="background-image: url('{{ wallpaper.image.url }}');"></div>
+  <div id="wallpaper-info">
+      <p><a href="{{ wallpaper.link }}" target="_blank">{{ wallpaper.title }}</a></p>
+      {% if wallpaper.author %}
+      <p class="author">by {{ wallpaper.author }}</p>
+      {% elif wallpaper %}
+      <p class="author">Artist Unknown</p>
+      {% endif %}
+  </div>
+  <a id="button-zhq" class="icon" href="{% url 'login' %}"></a>
+  
+  <!-- flash message area -->
+  <div class="row">
+      <div class="large-12 columns">
+          <ul class="messages">
+              {% for message in messages %}
+              <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message|safe }}</li>
+              {% endfor %}
+          </ul>
+      </div>
+  </div>
 </div>
 
 {% block content %}

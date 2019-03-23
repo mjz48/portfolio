@@ -3,46 +3,95 @@
 
 {% block http_headers %}
 <link id="resume-css-include" rel="stylesheet" type="text/css" href="{% static 'css/resume.css' %}">
-
-<script type="text/javascript">
-$(function () {
-  createPrintFrame();
-
-  // override ctrl + p event
-  $(window).bind("keydown", function(event) {
-    console.log('keypress');
-    if (event.ctrlKey && event.keyCode == 80) {
-      printResume();
-    }
-  });
-});
-</script>
 {% endblock %}
 
 {% block content %}
 <div id="main-content">
-    <div class="row">
+    <div class="row not-printable">
         <nav role="navigation">
             <ul class="group">
                 <li><a href="{% url 'index' %}">Home</a></li>
-                <li><a id="print-resume" href="{% static 'documents/MichaelZhu_Resume_2016.pdf' %}" target="_blank">Download PDF</a></li>
+                <li><a id="print-resume" href="{% static 'documents/Michael Zhu Resume 2019 Software.pdf' %}" target="_blank">Download PDF</a></li>
             </ul>
         </nav>
     </div>
-
     <div class="row">
         <div id="resume-container" class="large-12 columns">
             <h1>Michael Zhu</h1>
-            <p class="subtitle">San Jose, CA 95112<br>Cell: 401.626.0605 | www.ultimatezhu.com | mikejzhu@gmail.com</p>
+            <p class="subtitle">San Jose, CA 95112<br><a href="mailto:mikejzhu@gmail.com">mikejzhu@gmail.com</a> | <a href="http://www.ultimatezhu.com">www.ultimatezhu.com</a> | <a href="https://github.com/mjz48">https://github.com/mjz48</a></p>
 
-            <h2>Summary of Qualifications</h2><hr>
+            <h2>Work Experience</h2><hr>
+            <table class="experience">
+                <tr>
+                    <td><b>Logic Validation Engineer</b>, Intel Federal, Santa Clara, CA</td>
+                    <td>April 2018 - Present</td>
+                </tr>
+            </table>
             <ul>
-               <li>Intermediate to Advanced C++ experience - OOP principles + arch, template metaprogramming, data structures</li>
-               <li>2 years of C++ industry experience - programming C/C++ since college and high school</li>
-               <li>Motivated and goal oriented - constantly learning new frameworks/tools/skills to take on new projects</li>
-               <li>Wide range of experience - RTL digital design, firmware & RTOS, application level programming, web apps</li>
-               <li>Experience with embedded microcontroller programming (ATMEL) from school courses</li>
-               <li>Microprocessor design experience (performance analysis and comparing architectural tradeoffs</li>
+                <li>Designed framework in object-oriented SystemVerilog to validate HPC server memory with FSMs</li>
+                <li>Team of 6 workers used framework for job tasks; improved software through rounds of feedback</li>
+                <li>Stubbed out test library and test-bench class hierarchy; set up build libraries and toolchain dependencies</li>
+            </ul>
+
+            <table class="experience">
+                <tr>
+                    <td><b>Logic Validation Engineer</b>, Intel Corporation, Santa Clara, CA</td>
+                    <td>June 2015 - April 2018</td>
+                </tr>
+            </table>
+            <ul>
+                <li>Wrote cronjob to run weekly tests and made python/perl scripts to parse results and email report to team</li>
+                <li>Worked on a team of 3 to develop validation collateral to test error correction and exception handling logic</li>
+            </ul>
+
+            <table class="experience">
+                <tr>
+                    <td><b>System Design Engineer</b>, SanDisk Corporation, Milpitas, CA</td>
+                    <td>June 2012 - July 2014</td>
+                </tr>
+            </table>
+            <ul>
+                <li>Wrote internal tool to schedule test suite with web front-end; reduced runtime from 1 month to 5 days</li>
+                <li>Modeled eMMC NAND memory in SystemC for NAND memory controller reference model on a team of 7</li>
+                <li>Allowed architects to measure performance and inform architectural decisions of next gen product</li>
+            </ul>
+
+            <h2>Independent Projects</h2><hr>
+            <table class="experience">
+               <tr>
+                  <td><b>Simple Game Engine in C++/SFML and Tile Map Editor</b></td>
+                  <td>August 2015 - Present</td>
+               </tr>
+            </table>
+            <ul>
+               <li>Wrote an Entity Component System (ECS) using standard C++11 with boost and SFML multimedia library</li>
+               <li>Implemented swept axis-aligned bounding box (AABB) collision algorithm for 2D platforming demo</li>
+               <li>Object oriented software architecture uses composition, data patterns, and templates for clean user APIs</li>
+               <li>Includes in-engine GUI tile editor with ability to read and save map data to text files in JSON format</li>
+            </ul>
+
+            <table class="experience">
+               <tr>
+                  <td><b>Blogging and Personal Organization Website</b></td>
+                  <td>December 2015 - October 2018</td>
+               </tr>
+            </table>
+            <ul>
+               <li>Custom Django app hosted on Heroku and Amazon S3</li>
+               <li>Uses celery + redis to enable scheduling and backlogging of blog posts and "link of the day"</li>
+               <li>Utilizes Django ImageKit and Python Pillow packages for server side image resizing and cropping</li>
+               <li>SQL backend using Postgres and psycopg2 (Python postgres adapter)</li>
+            </ul>
+
+            <table class="experience">
+               <tr>
+                  <td><b>Operating System (with Networking capabilities) Practicum</b></td>
+                  <td>September 2011 - December 2011</td>
+               </tr>
+            </table>
+            <ul>
+               <li>Wrote a pre-emptive scheduling kernel with UDP and TCP/IP networking</li>
+               <li>Implemented a very pared down and simplified file system</li>
             </ul>
 
             <h2>Selected Skills</h2><hr>
@@ -51,20 +100,9 @@ $(function () {
                     <td>Programming/Scripting</td>
                     <td>
                         <ul class="skills group">
+                            <li>C++ (4+ years experience, familiar with C++11)</li>
                             <li>Python</li>
-                            <li>C/C++</li>
                             <li>Java</li>
-                            <li>Matlab</li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td>HDL/Digital Design</td>
-                    <td>
-                        <ul class="skills group">
-                            <li>Verilog</li>
-                            <li>SystemC</li>
-                            <li>MIPS Assembly</li>
                         </ul>
                     </td>
                 </tr>
@@ -74,75 +112,36 @@ $(function () {
                         <ul class="skills group">
                             <li>Django</li>
                             <li>Heroku</li>
-                            <li>JavaScript</li>
-                            <li>LAMP Server Experience</li>
+                            <li>SQL</li>
+                            <li>CSS</li>
                         </ul>
                     </td>
                 </tr>
                 <tr>
-                    <td>Environment/Tools</td>
+                    <td>Environment/Toolchain</td>
                     <td>
                         <ul class="skills group">
-                            <li>Visual Studio 2008</li>
-                            <li>Oracle VirtualBox</li>
-                            <li>Android ADB</li>
-                            <li>Linux (Gentoo/Ubuntu)</li>
+                            <li>GDB</li>
+                            <li>gprof (software profiler)</li>
+                            <li>Valgrind</li>
+                            <li>Git</li>
+                            <li>Vim</li>
+                            <li>Emacs</li>
                         </ul>
                     </td>
                 </tr>
             </table>
 
-            <h2>Work Experience</h2><hr>
-            <table class="experience">
-                <tr>
-                    <td>Independent Web Dev. (2014 - Present)</td>
-                    <td>Santa Clara, CA</td>
-                    <td></td>
-                </tr>
-            </table>
-            <ul>
-                <li>Use python and Django framework to create multiple interactive MVC style websites</li>
-                <li>Responsible for everything - backend development/testing, front end UI, web admin, deployment</li>
-                <li>Working towards realizing own vision; learning and practicing tools/design techniques with rigorous code output</li>
-            </ul>
-
-            <table class="experience">
-                <tr>
-                    <td>SanDisk Corporation (2012 - 2014)</td>
-                    <td>Milpitas, CA</td>
-                    <td>Systems Design Engineer II</td>
-                </tr>
-            </table>
-            <ul>
-                <li>Modeled NAND flash controller design on a behavioral level with SystemC library. Helped define scope of project with a team of 6 other engineers. Made architectural design recommendations based on modeling results. Made simulation design decisions for tradeoffs between simulation performance and model accuracy.</li>
-                <li>Made automated tools for running regression and sanity tests to reduce runtime from 1 month to 5 days. Written in python to utilize multiprocessor capabilities with a javascript enabled web front-end. Very user friendly interface, error free test results collection, and maintainable.</li>
-            </ul>
-
-            <table class="experience">
-                <tr>
-                    <td>Cisco Systems (2011)</td>
-                    <td>Milpitas, CA</td>
-                    <td>Dev. Test Intern</td>
-                </tr>
-            </table>
-            <ul>
-                <li>Learned to update server racks with new iterations of firmware using Cisco IOS. Tracked sanity of new releases with Excel spreadsheet. Learned about Quality of Service features implemented in high end enterprise routers.</li>
-            </ul>
-
-            <h2>Relevant Courses</h2><hr>
-            <ul>
-                <li class="strong em">ECE 4750 (Computer Architecture) - Advanced microprocessor RTL design and trade-off analysis</li>
-                <li class="strong em">CS 4410/4411 (Operating Systems with Practicum) - Theory with project to create a basic OS</li>
-                <li>INFO 3300 (Data Driven Web Applications) - REST services, MVC frameworks, and "Web 2.0" apps</li>
-                <li>CS 2800 (Discrete Math and Algorithms) - Proof by Inductions, Finite State Machines, Combinatorics</li>
-            </ul>
-
             <h2>Education</h2><hr>
-            <table class="education">
+            <table class="experience">
                 <tr>
-                    <td>Cornell University (2008 - 2012)</td>
-                    <td>B.S. Electrical and Computer Engineering, Minor in CS</td>
+                    <td><b>Cornell University</b></td>
+                    <td>May 2012</td>
                 </tr>
+                <tr>
+                    <td><i>B.S. Electrical and Computer Engineering, Minor in CS</i></td>
+                    <td></td>
+               </tr>
             </table>
         </div>
     </div>
