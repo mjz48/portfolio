@@ -65,3 +65,6 @@ target/
 
 # ignore virtualenv
 venv/
+
+# ignore env variables
+keyring.sh
