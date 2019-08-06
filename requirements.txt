@@ -1,6 +1,6 @@
 boto==2.37.0
 dj-database-url==0.3.0
-Django==1.11.20
+Django==1.11.23
 django-postgrespool==0.3.0
 django-storages==1.7.1
 gunicorn==19.5.0
